@@ -102,12 +102,12 @@ drought_exp_clean <- drought_exp |> # INSERT COMMENT HERE
                                     "Stipa pulchra",
                                     "Eschscholzia californica",
                                     "Grindelia camporum")) |> 
-  # INSERT COMMENT HERE
+  # making sure that water_treatment is a factor and ordering levels
   mutate(water_treatment = as_factor(water_treatment),
          water_treatment = fct_relevel(water_treatment,
                                        "Drought stressed",
                                        "Well watered")) |> 
-  # INSERT COMMENT HERE
+  # selecting columns
   select(species_name, water_treatment, sla, total_g)
 ```
 
@@ -143,7 +143,7 @@ ggplot(data = drought_exp_clean,
   # relabeling axes and adding a title
   labs(x = expression(Specific~leaf~area~(cm^2/g)),
        y = "Total mass (g)",
-       title = "INSERT YOUR TITLE HERE")
+       title = "As SLA increases, total plant mass tends to increase \n (positive relationship)")
 ```
 
 ## What are the differences in total mass between water treatments?
@@ -171,7 +171,7 @@ ggplot(data = drought_exp_clean,
   # changing axis labels and title
   labs(x = "Water treatment",
        y = "Total mass (g)",
-       title = "INSERT YOUR TITLE HERE") +
+       title = "Mean plant mass is higher in well watered than \ndrought stressed treatment") +
   # taking out legend
   theme(legend.position = "none")
 ```
@@ -210,7 +210,7 @@ ggplot(data = drought_exp_clean,
   # labelling axes and title
   labs(x = "Species",
        y = "Total mass (g)",
-       title = "INSERT YOUR TITLE HERE") +
+       title = "Species differ in mean total mass") +
   # getting rid of legend
   theme(legend.position = "none")
 ```
